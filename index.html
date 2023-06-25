@@ -11,7 +11,6 @@
       font-style: normal;
       font-display: swap;
     }
-
     body {
       margin: 0;
       height: 100vh;
@@ -26,7 +25,9 @@
 
     @keyframes gradientAnimation {
       0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 0% 50%; }
+      75% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -43,7 +44,7 @@
       text-align: center;
       position: absolute;
       top: 20px;
-      left: calc(50% - 50px);
+      left: calc(50% - 90px);
       transform: translateX(-50%);
     }
 
@@ -62,7 +63,7 @@
     .countdown-container {
       position: absolute;
       top: 50%;
-      left: calc(50% - 100px);
+      left: calc(50% - 140px);
       transform: translate(-50%, -50%);
       display: flex;
       justify-content: center;
@@ -104,6 +105,41 @@
       opacity: 0.6;
       text-align: center;
     }
+
+    .donate-link {
+      position: absolute;
+      top: 20px;
+      left: 10px; /* Adjust the distance from the "DISCORD" text as needed */
+      font-family: 'LemonMilk Bold', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .version-link {
+      position: absolute;
+      top: 20px;
+      right: 10px; /* Adjust the distance from the right edge as needed */
+      font-family: 'LemonMilk Bold', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-text">VOID</div>
+  
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>VOIDMP</title>
+  <style>
+    /* Stylesheet omitted for brevity */
   </style>
 </head>
 <body>
@@ -117,8 +153,11 @@
     <div class="countdown-value" id="minutes">0 minutes</div>
     <div class="countdown-value" id="seconds">0 seconds</div>
   </div>
-
+  
   <div class="made-by">MADE BY TASZFX</div>
+
+  <div class="donate-link" onclick="redirectToDonation()">Donate</div>
+  <div class="version-link" onclick="redirectToVersion()">Version</div>
 
   <script>
     // Retrieve the target date from local storage if it exists
@@ -155,39 +194,38 @@
       document.getElementById("minutes").innerHTML = minutes + " minutes";
       document.getElementById("seconds").innerHTML = seconds + " seconds";
     }
+
+    function redirectToDonation() {
+      window.location.href = "https://cash.app/£ejxd7";
+    }
+
+    function redirectToVersion() {
+      window.location.href = "https://cdn.fnbuilds.services/7.40.rar";
+    }
   </script>
 </body>
 </html>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<style>
-  /* Existing CSS code */
-
-  .donate-link {
-    position: absolute;
-    top: 20px;
-    left: 10px; /* Adjust the distance from the "DISCORD" text as needed */
-    font-family: 'LemonMilk Bold', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.8);
-    cursor: pointer;
-    text-decoration: underline;
-  }
-</style>
-</head>
-<body>
-<div class="donate-link" onclick="redirectToDonation()">Donate</div>
-
-<!-- Existing HTML code -->
 <script>
+  const socket = new WebSocket('ws://localhost:8080');
 
-  function redirectToDonation() {
-    window.location.href = "https://cash.app/£ejxd7";
-  }
+  // Update the countdown elements based on received data
+  function updateCountdown(data) {
+    const weeks = data.weeks;
+    const days = data.days;
+    const hours = data.hours;
+    const minutes = data.minutes;
+    const seconds = data.seconds;
+}
 
-  // Rest of the JavaScript code
+  // Handle WebSocket messages
+  socket.onmessage = event => {
+    const data = JSON.parse(event.data);
+    updateCountdown(data);
+  };
+  
 </script>
 </body>
 </html>
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
