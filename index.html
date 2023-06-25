@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VOIDMP</title>
+  <style>
+    @font-face {
+      font-family: 'LemonMilk Bold';
+      src: url('fonts/lemonmilk-bold.woff2') format('woff2'),
+           url('fonts/lemonmilk-bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, gray, black, purple, black, gray);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .floating-text {
+      font-family: 'LemonMilk Medium', sans-serif;
+      font-size: 80px;
+      font-weight: normal;
+      background: linear-gradient(to right, #4b0082, white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: white;
+      animation: float 3s infinite ease-in-out;
+      text-align: center;
+      position: absolute;
+      top: 20px;
+      left: calc(50% - 50px);
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .countdown-container {
+      position: absolute;
+      top: 50%;
+      left: calc(50% - 100px);
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 300px;
+      height: 200px;
+      background: linear-gradient(to bottom right, #4b0082, white);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      animation: float 3s infinite ease-in-out;
+    }
+
+    .countdown-title {
+      font-family: 'LemonMilk Bold', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .countdown-value {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin: 5px;
+    }
+
+    .made-by {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      opacity: 0.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-text">VOID</div>
+  
+  <div class="countdown-container">
+    <div class="countdown-title">ETA:</div>
+    <div class="countdown-value" id="weeks">0 weeks</div>
+    <div class="countdown-value" id="days">0 days</div>
+    <div class="countdown-value" id="hours">0 hours</div>
+    <div class="countdown-value" id="minutes">0 minutes</div>
+    <div class="countdown-value" id="seconds">0 seconds</div>
+  </div>
+
+  <div class="made-by">MADE BY TASZFX</div>
+
+  <script>
+    // Set the target date for the countdown
+    var targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 14);
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+      var currentDate = new Date();
+      var timeDifference = targetDate - currentDate;
+
+      // Calculate the number of weeks, days, hours, minutes, and seconds remaining
+      var weeks = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+      var days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      // Update the countdown elements
+      document.getElementById("weeks").innerHTML = weeks + " weeks";
+      document.getElementById("days").innerHTML = days + " days";
+      document.getElementById("hours").innerHTML = hours + " hours";
+      document.getElementById("minutes").innerHTML = minutes + " minutes";
+      document.getElementById("seconds").innerHTML = seconds + " seconds";
+    }
+  </script>
+</body>
+</html>
+<style>
+    /* Existing CSS code */
+  
+    .made-by {
+      position: absolute;
+      bottom: 20px;
+      left: calc(50% + 40px); /* Move it to the right by 40 pixels */
+      transform: translateX(-50%);
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      opacity: 0.6; /* Increase the transparency to 0.6 */
+      text-align: center;
+    }
+  </style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown</title>
+  <style>
+    /* Existing CSS code */
+
+    .discord-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-family: 'LemonMilk Bold', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .donate-link {
+      position: absolute;
+      top: 20px;
+      left: 130px; /* Adjust the distance from the "DISCORD" text as needed */
+      font-family: 'LemonMilk Bold', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="discord-link" onclick="redirectToDiscord()">DISCORD</div>
+  <div class="donate-link" onclick="redirectToDonation()">Donate</div>
+
+  <!-- Existing HTML code -->
+
+  <script>
+    function redirectToDiscord() {
+      window.location.href = "https://discord.gg/XfXjQQ4Qdk";
+    }
+
+    function redirectToDonation() {
+      window.location.href = "https://cash.app/£ejxd7";
+    }
+
+    // Rest of the JavaScript code
+  </script>
+</body>
+</html>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
