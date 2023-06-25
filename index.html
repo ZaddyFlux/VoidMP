@@ -101,7 +101,7 @@
       font-size: 14px;
       font-weight: bold;
       color: white;
-      opacity: 0.8;
+      opacity: 0.6;
       text-align: center;
     }
   </style>
@@ -121,9 +121,18 @@
   <div class="made-by">MADE BY TASZFX</div>
 
   <script>
+    // Retrieve the target date from local storage if it exists
+    var storedTargetDate = localStorage.getItem("targetDate");
+
     // Set the target date for the countdown
-    var targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 14);
+    var targetDate;
+    if (storedTargetDate) {
+      targetDate = new Date(storedTargetDate);
+    } else {
+      targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 14);
+      localStorage.setItem("targetDate", targetDate);
+    }
 
     // Update the countdown every second
     setInterval(updateCountdown, 1000);
@@ -149,74 +158,52 @@
   </script>
 </body>
 </html>
+
 <style>
-    /* Existing CSS code */
-  
-    .made-by {
-      position: absolute;
-      bottom: 20px;
-      left: calc(50% + 40px); /* Move it to the right by 40 pixels */
-      transform: translateX(-50%);
-      font-family: 'Arial', sans-serif;
-      font-size: 14px;
-      font-weight: bold;
-      color: white;
-      opacity: 0.6; /* Increase the transparency to 0.6 */
-      text-align: center;
-    }
-  </style>
+  /* Existing CSS code */
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Countdown</title>
-  <style>
-    /* Existing CSS code */
+  .discord-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'LemonMilk Bold', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    text-decoration: underline;
+  }
 
-    .discord-link {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-family: 'LemonMilk Bold', sans-serif;
-      font-size: 18px;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .donate-link {
-      position: absolute;
-      top: 20px;
-      left: 130px; /* Adjust the distance from the "DISCORD" text as needed */
-      font-family: 'LemonMilk Bold', sans-serif;
-      font-size: 18px;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  </style>
+  .donate-link {
+    position: absolute;
+    top: 20px;
+    left: 130px; /* Adjust the distance from the "DISCORD" text as needed */
+    font-family: 'LemonMilk Bold', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
-  <div class="discord-link" onclick="redirectToDiscord()">DISCORD</div>
-  <div class="donate-link" onclick="redirectToDonation()">Donate</div>
+<div class="discord-link" onclick="redirectToDiscord()">DISCORD</div>
+<div class="donate-link" onclick="redirectToDonation()">Donate</div>
 
-  <!-- Existing HTML code -->
+<!-- Existing HTML code -->
 
-  <script>
-    function redirectToDiscord() {
-      window.location.href = "https://discord.gg/XfXjQQ4Qdk";
-    }
+<script>
+  function redirectToDiscord() {
+    window.location.href = "https://discord.gg/XfXjQQ4Qdk";
+  }
 
-    function redirectToDonation() {
-      window.location.href = "https://cash.app/£ejxd7";
-    }
+  function redirectToDonation() {
+    window.location.href = "https://cash.app/£ejxd7";
+  }
 
-    // Rest of the JavaScript code
-  </script>
+  // Rest of the JavaScript code
+</script>
 </body>
 </html>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
 
