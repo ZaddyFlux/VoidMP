@@ -72,3 +72,5 @@ wss.on('connection', ws => {
 });
 
 console.log('WebSocket server running on port 8080');
+const socket = new WebSocket('ws://localhost:8080');
+
