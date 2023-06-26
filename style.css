@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, gray, black, purple, black, gray);
+    background: linear-gradient(45deg, rgb(17, 24, 39), rgb(0, 72, 180), rgb(19, 17, 148), rgb(0, 72, 180), rgb(17, 24, 39));
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     overflow: hidden;
@@ -33,7 +33,7 @@ body {
 .text-container {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 95%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
