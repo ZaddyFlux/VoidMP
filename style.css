@@ -17,6 +17,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     animation: floatUpDown 2s infinite ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes floatUpDown {
@@ -33,7 +34,7 @@ body {
 
 .text-container {
     position: absolute;
-    top: 80%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
