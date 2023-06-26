@@ -28,9 +28,9 @@ body {
 
 .text-container {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     text-align: center;
     color: white;
     font-family: Arial, sans-serif;
@@ -50,4 +50,5 @@ body {
 .text-container p {
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
 }
