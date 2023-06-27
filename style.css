@@ -39,7 +39,8 @@ body {
     transform: translateX(-50%);
     text-align: center;
     color: white;
-    font-family: 'LemonMilk Medium', sans-serif;
+    font-family: 'LemonMilk Medium';
+    font-weight: bold;
     width: 90%;
     height: 90%;
     display: flex;
